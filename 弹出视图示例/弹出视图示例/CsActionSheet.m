@@ -22,6 +22,7 @@
     self = [super init];
     if (self) {
         UIWindow *window = [[UIApplication sharedApplication] keyWindow];
+        self.backgroundColor = [[UIColor blackColor] colorWithAlphaComponent:0];
         self.frame = window.bounds;
         self.menuStrings = strings;
         self.cancelString = cancelString;
