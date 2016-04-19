@@ -7,7 +7,13 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <objc/runtime.h>
+#import <objc/message.h>
+
 @class CsActionSheet;
+
+typedef void (^ActionSheetCallBack)(CsActionSheet *, int);
+
 @protocol CsActionSheetDelegate <NSObject>
 
 @required
@@ -15,8 +21,9 @@
 
 @end
 @interface CsActionSheet : UIView
+@property (nonatomic, copy) ActionSheetCallBack callBack;
 @property (nonatomic, weak) id<CsActionSheetDelegate>delegate;
-- (instancetype)initWithArray:(NSArray *)strings andCancelString:(NSString *)cancelString;
+- (instancetype)initWithArray:(NSArray *)strings andCancelString:(NSString *)cancelString andTitle:(NSString *)title;
 - (void)show;
 - (void)dismiss;
 @end
